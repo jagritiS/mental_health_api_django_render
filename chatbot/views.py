@@ -8,7 +8,6 @@ responses = {
     "lonely": "Try connecting with a friend or loved one."
 }
 
-
 @api_view(["POST"])
 def chat(request):
     message = request.data.get("message", "").lower()
@@ -25,14 +24,8 @@ def chat(request):
         "reply": reply
     })
 
-
 @api_view(["GET"])
 def moods(request):
     return Response({
         "supported_moods": list(responses.keys())
     })
-
-
-from django.shortcuts import render
-
-# Create your views here.
