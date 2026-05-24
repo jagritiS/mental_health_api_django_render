@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'mentalhealth.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://localhost/mentalhealth_local',
+        default='postgresql://localhost/mental_health_api',
         conn_max_age=600
     )
 }
