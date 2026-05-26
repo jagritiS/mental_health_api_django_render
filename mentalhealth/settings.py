@@ -82,13 +82,23 @@ WSGI_APPLICATION = 'mentalhealth.wsgi.application'
 
 
 
-
-DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://localhost/mental_health_api',
-        conn_max_age=600
-    )
-}
+if os.environ.get("RENDER"):
+    DATABASES = {
+        'default': dj_database_url.parse(
+            os.environ.get("DATABASE_URL")
+        )
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'mental_health_api',
+            'USER': 'jagritisrivastava',
+            'PASSWORD': '',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 
 # Password validation
